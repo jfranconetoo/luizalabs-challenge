@@ -1,17 +1,17 @@
 type Products = {
-    product_id: number;
+    productId: number;
     value: number;
 };
 
 type Orders = {
-    order_id: number;
+    orderId: number;
     total: number;
     date: Date;
     products: Products[];
 };
 
 export class OrderSummary {
-    user_id: number;
+    userId: number;
     name: string;
     orders: Orders[];
 }

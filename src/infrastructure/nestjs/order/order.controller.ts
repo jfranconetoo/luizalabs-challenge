@@ -28,7 +28,9 @@ export class OrderController {
 
     @Post('/process-file')
     @UseInterceptors(FileInterceptor('file'))
-    async processFileAndBatchInsert(@UploadedFile() file: Express.Multer.File) {
+    async processFileAndBatchInsert(
+        @UploadedFile() file: Express.Multer.File,
+    ): Promise<void> {
         const fileStream = Readable.from(file.buffer);
         return this.orderFacade.processFileAndBatchInsert(fileStream);
     }

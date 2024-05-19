@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+    title: Order API
+    version: 1.0.0
+
+paths:
+    /orders:
+        get:
+            summary: Get Orders Summary
+            description: Retrieves a list of order summaries based on provided filters.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/OrderValidatedSummaryFiltersDto'
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/OrderSummary'
+
+    /orders/process-file:
+        post:
+            summary: Process File and Batch Insert Orders
+            description: Uploads a file containing order data and triggers batch insertion.
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                file:
+                                    type: string
+                                    format: binary
+            responses:
+                '201':
+                    description: OK
+
+components:
+    schemas:
+        OrderValidatedSummaryFiltersDto:
+            type: object
+            properties:
+                orderId:
+                    type: integer
+                startDate:
+                    type: string
+                    format: date
+                endDate:
+                    type: string
+                    format: date
+        OrderSummary:
+            type: object
+            properties:
+                userId:
+                    type: integer
+                    description: Unique identifier for the user associated with the order summary.
+                name:
+                    type: string
+                    description: Name associated with the order summary.
+                orders:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Order'
+        Order:
+            type: object
+            properties:
+                orderId:
+                    type: integer
+                    description: Unique identifier for the order.
+                total:
+                    type: number
+                    description: Total amount of the order.
+                date:
+                    type: string
+                    format: date
+                    description: Order date.
+                products:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Products'
+        Products:
+            type: object
+            properties:
+                productId:
+                    type: integer
+                    description: Unique identifier for the product.
+                value:
+                    type: number
+                    description: Value (price) of the product.
