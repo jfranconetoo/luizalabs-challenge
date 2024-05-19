@@ -135,6 +135,8 @@ npm run build && node dist/main.js
 
 :warning: **If you aren't running by docker compose**: Mongodb must be running!
 
+[OpenAPI Specification](https://github.com/jfranconetoo/luizalabs-challenge/blob/main/src/docs/openapi.yaml)
+
 ### 🧪 Tests
 
 To execute tests, run:
