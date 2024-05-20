@@ -53,6 +53,7 @@ This project is a response to a challenge presented by LuizaLabs. It demonstrate
     │   │       ├── dtos
     │   │       │   └── order-summary-filters.dto.ts
     │   │       ├── interfaces
+    │   │       │   └── order-facade.spec.ts
     │   │       │   └── order-facade.ts
     │   │       └── order.facade.ts
     │   ├── cluster.ts
@@ -67,8 +68,10 @@ This project is a response to a challenge presented by LuizaLabs. It demonstrate
     │   │   │   └── order.interface.ts
     │   │   └── usecases
     │   │       ├── get-summary-orders
+    │   │       │   └── get-summary-orders.usecase.spec.ts
     │   │       │   └── get-summary-orders.usecase.ts
     │   │       └── process-file-and-batch-insert
+    │   │           └── process-file-and-batch-insert.usecase.spec.ts
     │   │           └── process-file-and-batch-insert.usecase.ts
     │   ├── infrastructure
     │   │   └── nestjs
